@@ -1,0 +1,509 @@
+@charset "UTF-8";
+html {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%; }
+  html body {
+    overflow-x: hidden; }
+  html .b {
+    font-weight: bold; }
+  html .r {
+    color: #e74c3c;
+    border: solid 1px #e1e4e5;
+    font-size: 12px;
+    background: white;
+    padding: 2px 5px 1px; }
+  html .w {
+    border: solid 1px #e1e4e5;
+    font-size: 13px;
+    background: white;
+    padding: 1px 5px; }
+  html .pr {
+    color: #e74c3c; }
+  html .pg {
+    color: #718c00; }
+  html .codebox {
+    height: auto;
+    background: white;
+    padding: 30px 35px;
+    border: solid 1px #e1e4e5;
+    position: relative;
+    overflow: auto; }
+    html .codebox::before {
+      content: "{";
+      font-size: 10px;
+      position: absolute;
+      top: 15px;
+      left: 15px; }
+    html .codebox::after {
+      content: "}";
+      font-size: 10px;
+      position: absolute;
+      bottom: 15px;
+      left: 15px; }
+    html .codebox p {
+      font-size: 13px;
+      line-height: 20px; }
+    html .codebox .inner {
+      width: 1100px;
+      margin: 0px 0px 0px 50px; }
+    html .codebox .grayword {
+      position: absolute;
+      width: 700px;
+      top: 33px;
+      left: 200px; }
+      html .codebox .grayword p {
+        color: #999988; }
+  html .a, html .a2, html .d, html .c, html .i, html .i2 {
+    width: calc(100%-30px);
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 15px 12px; }
+    html .a::before, html .a2::before, html .d::before, html .c::before, html .i::before, html .i2::before {
+      content: "";
+      position: absolute;
+      color: white;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      top: 0px;
+      left: 0px;
+      padding-left: 40px;
+      font-size: 16px; }
+    html .a::after, html .a2::after, html .d::after, html .c::after, html .i::after, html .i2::after {
+      content: "！";
+      position: absolute;
+      width: 19px;
+      height: 19px;
+      background: white;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 19px;
+      top: 6px;
+      left: 16px;
+      font-weight: bold; }
+    html .a p, html .a2 p, html .d p, html .c p, html .i p, html .i2 p {
+      font-size: 16px;
+      line-height: 24px; }
+      html .a p:last-child, html .a2 p:last-child, html .d p:last-child, html .c p:last-child, html .i p:last-child, html .i2 p:last-child {
+        padding: 0px; }
+  html .a {
+    background: #ffedcc;
+    border: solid 1px #f0b37d; }
+    html .a::before {
+      content: "注意";
+      background: #f0b37e; }
+    html .a::after {
+      color: #f0b37e; }
+  html .a2 {
+    background: #ffedcc; }
+    html .a2::before {
+      content: "警告";
+      background: #f0b37e; }
+    html .a2::after {
+      color: #f0b37e; }
+  html .d {
+    background: #fdf3f2; }
+    html .d::before {
+      content: "危險";
+      background: #f29f97; }
+    html .d::after {
+      color: #f29f97; }
+  html .c {
+    background: #e7f2fa; }
+    html .c::before {
+      content: "註解";
+      background: #6ab0de; }
+    html .c::after {
+      color: #6ab0de; }
+  html .i {
+    background: #dbfaf4; }
+    html .i::before {
+      content: "重要";
+      background: #1abc9c; }
+    html .i::after {
+      color: #1abc9c; }
+  html .i2 {
+    background: #dbfaf4; }
+    html .i2::before {
+      content: "小技巧";
+      background: #1abc9c; }
+    html .i2::after {
+      color: #1abc9c; }
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+button {
+  font-family: "微軟正黑體";
+  border: none;
+  outline: none;
+  cursor: pointer; }
+
+input {
+  outline: none; }
+
+html {
+  font-family: "微軟正黑體";
+  background: white;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0px auto;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto; }
+
+a:link {
+  text-decoration: none; }
+
+aside {
+  width: 300px;
+  height: 100%;
+  background: #242424;
+  overflow: auto;
+  z-index: 10;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  -webkit-box-shadow: 0px 0px 10px #000;
+  box-shadow: 0px 0px 10px #000; }
+  aside .logo {
+    width: 100%;
+    height: 120px;
+    background: #242424; }
+    aside .logo div {
+      width: 145px;
+      height: 51px;
+      background: url("../images/logo.png") no-repeat;
+      margin: 0px auto;
+      -webkit-transform: translateY(42px);
+      -ms-transform: translateY(42px);
+      transform: translateY(42px); }
+  aside .leftlist {
+    margin-top: 15px; }
+    aside .leftlist ul {
+      width: 100%;
+      height: 35px;
+      overflow: hidden; }
+      aside .leftlist ul span {
+        display: block;
+        color: #ededed;
+        line-height: 35px;
+        padding-left: 25px;
+        cursor: pointer; }
+        aside .leftlist ul span:hover, aside .leftlist ul span:active {
+          background: #929292;
+          font-weight: bold;
+          color: #ffffff; }
+      aside .leftlist ul p {
+        padding-left: 60px;
+        font-size: 15px;
+        color: #808080;
+        line-height: 36px; }
+        aside .leftlist ul p:hover, aside .leftlist ul p:active {
+          color: #2980b9; }
+      aside .leftlist ul.second {
+        position: relative; }
+        aside .leftlist ul.second .leftic {
+          width: 9px;
+          height: 9px;
+          position: absolute;
+          top: 13px;
+          left: 10px;
+          overflow: hidden; }
+          aside .leftlist ul.second .leftic::before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            top: 0px;
+            left: -9px;
+            background: url("../images/leftic.png"); }
+        aside .leftlist ul.second.slide {
+          height: auto;
+          background: #e3e3e3; }
+          aside .leftlist ul.second.slide li {
+            color: #1c1c1c;
+            height: 40px;
+            padding-left: 50px;
+            line-height: 40px;
+            cursor: pointer; }
+            aside .leftlist ul.second.slide li:hover, aside .leftlist ul.second.slide li:active {
+              background: #c71521;
+              color: #ffffff; }
+          aside .leftlist ul.second.slide span {
+            background: #fcfcfc;
+            color: #1c1c1c;
+            font-weight: bold; }
+          aside .leftlist ul.second.slide .leftic::before {
+            left: 0px;
+            top: -9px; }
+        aside .leftlist ul.second .third {
+          position: relative; }
+          aside .leftlist ul.second .third .leftic {
+            left: 25px; }
+            aside .leftlist ul.second .third .leftic::before {
+              top: 0px; }
+            aside .leftlist ul.second .third .leftic.white::before {
+              top: 0px;
+              left: -9px; }
+          aside .leftlist ul.second .third.slide {
+            height: auto; }
+            aside .leftlist ul.second .third.slide li:first-child {
+              background: #2980b9;
+              color: #ffffff;
+              font-weight: bold; }
+            aside .leftlist ul.second .third.slide .leftic::before {
+              top: -9px;
+              left: -9px; }
+
+main {
+  display: block;
+  width: calc(100%-300px);
+  height: auto;
+  margin-left: 300px; }
+  main .rwdtop {
+    display: none; }
+  main .top {
+    width: 100%;
+    height: 80px;
+    border-bottom: solid 1px #ffffff;
+    position: fixed;
+    background: url("../images/bg.jpg");
+    z-index: 9; }
+    main .top span {
+      display: block;
+      font-size: 36px;
+      font-weight: bold;
+      padding: 30px 0px 0px 60px; }
+  main article {
+    max-width: 1500px;
+    padding: 100px 60px 30px;
+    height: auto;
+    margin: 0px auto;
+    position: relative;
+    z-index: 5; }
+    main article .title {
+      margin-bottom: 40px; }
+      main article .title h1 {
+        font-size: 30px;
+        padding: 15px 0px;
+        font-weight: bold;
+        background-color: #c71521;
+        color: #ffffff; }
+      main article .title div {
+        margin: 20px 0px; }
+        main article .title div h2 {
+          font-size: 30px;
+          padding-bottom: 20px; }
+        main article .title div h3 {
+          font-size: 15px;
+          padding-bottom: 20px; }
+      main article .title ul {
+        margin-bottom: 20px; }
+        main article .title ul li {
+          list-style: disc;
+          line-height: 24px;
+          margin-left: 20px;
+          font-size: 15px; }
+        main article .title ul .a {
+          margin: 5px 0px 20px 0px; }
+      main article .title table {
+        width: 100%;
+        height: auto;
+        border: solid 1px #b9bec1;
+        text-align: left;
+        margin-bottom: 20px; }
+        main article .title table th {
+          font-weight: bold;
+          border-right: solid 1px #b9bec1;
+          padding-left: 20px;
+          vertical-align: middle; }
+        main article .title table tr {
+          height: 40px;
+          background: #ffffff; }
+          main article .title table tr:nth-child(even) {
+            background: #f1f1f1; }
+        main article .title table td {
+          border: solid 1px #b9bec1;
+          padding-left: 20px;
+          vertical-align: middle;
+          word-break: break-all;
+          line-height: 24px; }
+          main article .title table td:nth-child(1) {
+            width: 25%; }
+          main article .title table td:nth-child(2) {
+            width: 15%; }
+          main article .title table td:nth-child(3) {
+            width: 45%; }
+        main article .title table.ex td:nth-child(1) {
+          width: 15%; }
+        main article .title table.ex td:nth-child(2) {
+          width: 15%; }
+        main article .title table.ex td:nth-child(3) {
+          width: 20%; }
+        main article .title table.ap {
+          max-width: 250px;
+          text-align: unset; }
+          main article .title table.ap th {
+            padding: 0px; }
+          main article .title table.ap td:nth-child(1) {
+            width: 50%; }
+          main article .title table.ap td:nth-child(2) {
+            width: 50%; }
+        main article .title table.ap_2 {
+          max-width: 400px;
+          text-align: center; }
+          main article .title table.ap_2 th {
+            padding: 0px; }
+          main article .title table.ap_2 td:nth-child(1) {
+            width: 20%;
+            padding: 0px; }
+          main article .title table.ap_2 td:nth-child(2) {
+            width: 80%;
+            text-align: left; }
+    main article .end {
+      display: block;
+      width: 100%;
+      text-align: center; }
+  main .filter {
+    width: 100%;
+    height: 500px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#ffffff), to(transparent));
+    background: -webkit-linear-gradient(bottom, #ffffff, transparent);
+    background: -o-linear-gradient(bottom, #ffffff, transparent);
+    background: linear-gradient(to top, #ffffff, transparent);
+    position: fixed;
+    bottom: 0px;
+    z-index: 1; }
+  main .bg {
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg.jpg");
+    position: fixed;
+    top: 0px;
+    z-index: -999; }
+
+@media only screen and (max-width: 769px) {
+  aside {
+    width: 70%;
+    -webkit-transform: translateX(-105%);
+    -ms-transform: translateX(-105%);
+    transform: translateX(-105%);
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    transition: 0.5s all; }
+  .slide {
+    -webkit-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    transform: translateX(0%); }
+  main {
+    width: 100%;
+    margin: 0px;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    transition: 0.5s all; }
+    main .rwdtop {
+      display: block;
+      width: 100%;
+      height: 70px;
+      background: #242424;
+      text-align: center;
+      position: fixed;
+      z-index: 100; }
+      main .rwdtop div {
+        width: 100%;
+        height: 70px;
+        text-align: center; }
+        main .rwdtop div button {
+          width: 36px;
+          height: 36px;
+          background: transparent;
+          position: relative;
+          float: left;
+          margin: 17px 0px 0px 20px; }
+          main .rwdtop div button::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: white;
+            border-radius: 5px;
+            top: 0px;
+            left: 0px; }
+          main .rwdtop div button::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: white;
+            border-radius: 5px;
+            bottom: 0px;
+            left: 0px; }
+          main .rwdtop div button span {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: white;
+            border-radius: 5px;
+            top: 15px;
+            left: 0px; }
+        main .rwdtop div p {
+          display: block;
+          color: white;
+          font-size: 18px;
+          line-height: 70px;
+          font-weight: bold;
+          margin: 0px auto; }
+        main .rwdtop div .logo {
+          width: 145px;
+          height: 51px;
+          background: url("../images/logo.png") no-repeat;
+          -webkit-transform: translateY(10px);
+          -ms-transform: translateY(10px);
+          transform: translateY(10px);
+          margin: 0px auto; }
+    main .top {
+      display: none; }
+    main article {
+      padding: 80px 30px 30px; }
+  .slide_r {
+    -webkit-transform: translateX(70%);
+    -ms-transform: translateX(70%);
+    transform: translateX(70%);
+    -webkit-filter: brightness(0.1);
+    filter: brightness(0.1); } }

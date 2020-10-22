@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sport book</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/javascript.js"></script>
+</head>
+<body ontouchstart="">
+    <!--邊選單-->
+    <aside>
+        <!--LOGO-->
+        <section class="logo"><div></div></section>
+        <!--邊選單-->
+        <section class="leftlist">
+            <ul class="second ul1">
+                <span>環境參數</span>
+                <li>環境參數</li>
+                <li>API說明</li>
+                <div class="leftic"></div>
+            </ul>
+            <ul class="second ul2">
+                <span>帳號相關</span>
+                <li>1.1 取得遊戲連結</li>
+                <li>1.2 玩家點數轉入</li>
+                <li>1.3 玩家點數轉出</li>
+                <li>1.4 查詢玩家餘額</li>
+                <li>1.5 查詢轉帳交易狀態</li>
+                <li>1.6 創建新玩家</li>
+                <li>1.7 創建管理帳號</li>
+                <div class="leftic"></div>
+            </ul>
+            <ul class="second ul3">
+                <span>帳務相關</span>
+                <li>2.1 注單查詢</li>
+                <div class="leftic"></div>
+            </ul>
+            <ul class="second ul4">
+                <span>後台相關</span>
+                <li>3.1 管理端URL</li>
+                <div class="leftic"></div>
+            </ul>
+            <ul class="second ul5">
+                <span>附錄</span>
+                <li>附錄一 - 球種代碼表</li>
+                <li>附錄二 - 玩法代碼表</li>
+                <li>附錄三 - 錯誤代碼表</li>
+                <div class="leftic"></div>
+            </ul>
+        </section>
+    </aside>
+    <!--主內容-->
+    <main>
+        <!--RWD-->
+        <div class="rwdtop">
+            <div>
+                <button><span></span></button>
+                <div class="logo"></div>
+            </div>
+        </div>
+        <!--開頭-->
+        <section class="top">
+            <span>sport book 介接規範</span>
+        </section>
+        <article>
+            <!--環境參數-->
+            <section class="title ti1">
+                <h1>環境參數</h1>
+                <!--環境參數-->
+                <div class="ti1_1">
+                    <h2>環境參數</h2>
+                    <h3>另外提供</h3>
+                </div>
+                <!--API說明-->
+                <div class="ti1_2">
+                    <h2>API說明</h2>
+                    <!--HASH驗證請求規則-->
+                    <h3>HASH驗證請求規則</h3>
+                    <ul>
+                        <li>所有參數不包含HASH，由A-Z soft排序</li>
+                        <li>將所有參數按照key1=key1&key2方式排列</li>
+                        <li>將secret加至參數最後方。例：key1=key1&key2=key2secret</li>
+                        <li>將整個字串做MD5加密</li>
+                    </ul>
+                    <!--傳輸方式與支援格式-->
+                    <h3>傳輸方式與支援格式</h3>
+                    <ul>
+                        <li>傳輸方式：POST</li>
+                        <li>支援格式：application/json</li>
+                    </ul>
+                    <!--API範例-->
+                    <h3>API範例</h3>
+                    <ul>
+                        <li>Request (application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">APIpartner</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"demo"</span>&nbsp;<span class="b">,</span></p>
+                            <p>"<span class="pr">function</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"getMemberPoint"</span>&nbsp;<span class="b">,</span></p>
+                            <p>"<span class="pr">mem</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"123"</span>&nbsp;<span class="b">,</span></p>
+                            <p>"<span class="pr">hash</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"132"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"msg"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"msg"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+            <!--帳號相關-->
+            <section class="title ti2">
+                <h1>1 帳號相關</h1>
+                <!--1.1-->
+                <div class="ti2_1">
+                    <h2>1.1 取得遊戲連結</h2>
+                    <ul>
+                        <li>功能代碼：domemlogin</li>
+                        <li>功能說明：此API用於取得遊戲大廳 url ，當取得 url 後，即可開啟該 url 進入遊戲大廳</li>
+                        <br>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"URL"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+                <!--1.2-->
+                <div class="ti2_2">
+                    <h2>1.2 玩家點數轉入</h2>
+                    <ul>
+                        <li>功能代碼：doDeposit</li>
+                        <li>功能說明：此API用於執行點數轉入。</li>
+                        <div class="a">
+                            <p>請勿在發出1.2玩家點數轉出API請求後立即呼叫1.5查詢轉帳交易狀態API，請至少等待十秒後才發出1.5查詢轉帳交易狀態API。</p>
+                            <p>此API回傳ret最多到小數第2位。</p>
+                        </div>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Credits</td>
+                                <td>Int</td>
+                                <td>存值額度(不接受負數)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>transacid</td>
+                                <td>String</td>
+                                <td>營運方存值ID</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"目前餘額"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+                <!--1.3-->
+                <div class="ti2_3">
+                    <h2>1.3 玩家點數轉出</h2>
+                    <ul>
+                        <li>功能代碼：doWithdrawal</li>
+                        <li>功能說明：此API用於執行點數轉出。</li>
+                        <div class="a">
+                            <p>請勿在發出1.3玩家點數轉出API請求後立即呼叫1.5查詢轉帳交易狀態API，請至少等待十秒後才發出1.5查詢轉帳交易狀態API。</p>
+                            <p>發出1.3玩家轉出API前，請先調用1.4查詢玩家餘額，確保該玩家擁有足夠餘額來執行該筆交易。</p>
+                            <p>此API回傳ret最多到小數第2位。</p>
+                        </div>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Credits</td>
+                                <td>Int</td>
+                                <td>存值額度(不接受負數)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>transacid</td>
+                                <td>String</td>
+                                <td>營運方存值ID</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"目前餘額"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+                <!--1.4-->
+                <div class="ti2_4">
+                    <h2>1.4 查詢玩家餘額</h2>
+                    <ul>
+                        <li>功能代碼：getMemberPoint</li>
+                        <li>功能說明：此API返回玩家目前餘額。</li>
+                        <div class="a">
+                            <p>如有注單結算被取消的情況，回傳值可能進入負值。</p>
+                            <p>此API回傳ret最多到小數第2位。</p>
+                        </div>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"玩家額度"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+                <!--1.5-->
+                <div class="ti2_5">
+                    <h2>1.5 查詢轉帳交易狀態</h2>
+                    <ul>
+                        <li>功能代碼：getMemberPoint</li>
+                        <li>功能說明：此API返回玩家轉帳交易的狀態。</li>
+                        <div class="a">
+                            <p>請勿在發出1.2玩家點數轉出API請求後立即呼叫1.5查詢轉帳交易狀態API，請至少等待十秒後才發出1.5查詢轉帳交易狀態API。</p>
+                        </div>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                            <div class="inner">
+                                <p>{</p>
+                                <p>action&emsp;<span class="b">:</span>&emsp;Deposit(存值)/Withdrawal(提值)</p>
+                                <p>amount&emsp;<span class="b">:</span>&emsp;當次轉入/出的額度</p>
+                                <p>addDate&emsp;<span class="b">:</span>&emsp;新增時間</p>
+                                <p>vendorTid&emsp;<span class="b">:</span>&emsp;遊戲供應商交易ID</p>
+                                <p>}</p>
+                            </div>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+                <!--1.6-->
+                <div class="ti2_6">
+                    <h2>1.6 創建新玩家</h2>
+                    <ul>
+                        <li>功能代碼：addMemberAccount</li>
+                        <li>功能說明：此API用於註冊一個新的遊戲玩家。</li>
+                        <div class="a">
+                            <p>istar sports 支援相同玩家帳號創建於不同營運商，如同一個玩家帳號已被其他營運商註冊，您仍可以註冊該玩家帳號。</p>
+                            <p>創建的帳號均會自動加上前墜。</p>
+                        </div>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>age</td>
+                                <td>String</td>
+                                <td>代理帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"Success"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+                <!--1.7-->
+                <div class="ti2_7">
+                    <h2>1.7 創建管理帳號</h2>
+                    <ul>
+                        <li>功能代碼：addManageAccount</li>
+                        <li>功能說明：此API用於註冊一個新的管理帳號。</li>
+                        <div class="a">
+                            <p>istar sports 支援相同玩家帳號創建於不同營運商，如同一個玩家帳號已被其他營運商註冊，您仍可以註冊該玩家帳號。</p>
+                            <p>創建的帳號均會自動加上前墜。</p>
+                        </div>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>玩家帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>upusername</td>
+                                <td>String</td>
+                                <td>上層管理帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>alias</td>
+                                <td>String</td>
+                                <td>要創建的管理名稱</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>lvl</td>
+                                <td>Number</td>
+                                <td>層級代碼-總監："6" , 大股東："5" , 股東："4" , 總代理："3" , 代理："2"</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"Success"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+            <!--帳務相關-->
+            <section class="title ti3">
+                <h1>帳務相關</h1>
+                <!--2.1-->
+                <div class="ti3_1">
+                    <h2>2.1 注單查詢</h2>
+                    <ul>
+                        <li>功能代碼：getDetailReport</li>
+                        <li>功能說明：此API回傳客戶報表資料</li>
+                        <div class="a">
+                            <p>系統僅支援以小時為單位的時間戳(舉例,2020-01-01 00:00:00 - 2020-01-01 01:00:00),如果日期區間無效則系統將回傳代碼 606002。</p>
+                            <p>因此API的回傳時間較久，建議您每小時呼叫一次並設定日期為一小時。</p>
+                            <p>如果需要發下一個請求，營運商需等待當前請求處理完畢。</p>
+                            <p>wingold最多到小數第2位</p>
+                            <p>ioratio最多到小數第3位</p>
+                        </div>
+                        <br>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>sdate</td>
+                                <td>String</td>
+                                <td>搜尋開始時間，格式:yyyy-mm-dd HH:00:00</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>edate</td>
+                                <td>String</td>
+                                <td>搜尋開始時間，格式:yyyy-mm-dd HH:00:00，必須設定大於&nbsp;<span class="pr">搜尋開始時間</span></td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>settlement</td>
+                                <td>String</td>
+                                <td>此參數用於決定 sdate 的定義<br>Y = 開獎時間(所投注比賽的開獎時間)<br>N = 注單新增時間</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                            <div class="inner">
+                                <p>allpage&nbsp;<span class="b">:</span>&emsp;<span class="pr">1</span></p>
+                                <p>thispage&nbsp;<span class="b">:</span>&emsp;<span class="pr">1</span></p>
+                                <p>row&nbsp;<span class="b">:</span>&emsp;<span class="pr">1</span></p>
+                                <p>report&nbsp;<span class="b">:</span></p>
+                                <div class="inner">
+                                    <p>{</p>
+                                    <div class="inner">
+                                        <p>demo_age&nbsp;<span class="b">:</span></p>
+                                        <div class="inner">
+                                            <p>[{</p>
+                                            <div class="inner">
+                                                <p><span class="pr">"gtype"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"BS"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"wtype"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"OU"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"tworderdate"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"2020-01-01"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"orderdate"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"2020-01-01"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"adddate"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"2020-01-01 03:00:00"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"editDateTime"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"2020-01-01 05:34:00"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"gold"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"2000"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"wingold"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"0.00"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"result"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"0"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"gid"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"12345"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"type"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"C"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"concede"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"-10"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"ratio"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"25"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"ioratio"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"0.92"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"orderIP"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"127.0.0.1"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"effective_gold"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"0"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"content"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"MLB ＜br＞＜font color=gray＞[全場][大小][BS12345]＜\/font＞巨人 Vs. 教士＜br\/＞小＜font color=red＞10-25＜\/font＞ @ ＜font color=red＞0.92＜\/font＞"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"good"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">""</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"lastdate"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"2020-01-01 17:20:00"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"mem_alias"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"demo_player"</span>&nbsp;<span class="b">,</span></p>
+                                                <p><span class="pr">"tname"</span>&nbsp;<span class="b">:</span>&emsp;<span class="pg">"OU"</span>&nbsp;<span class="b">,</span></p>
+                                            </div>
+                                            <p>}</p>
+                                            <p><span class="b">,</span>{......}]</p>
+                                        </div>
+                                    </div>
+                                    <p>}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;參數說明</li>
+                        <table class="ex">
+                            <tr>
+                                <th>第一層</th>
+                                <th>第二層</th>
+                                <th>第三層</th>
+                                <th>說明</th>
+                            </tr>
+                            <tr>
+                                <td>allpage</td>
+                                <td></td>
+                                <td></td>
+                                <td>總頁數</td>
+                            </tr>
+                            <tr>
+                                <td>thispage</td>
+                                <td></td>
+                                <td></td>
+                                <td>現在頁數</td>
+                            </tr>
+                            <tr>
+                                <td>row</td>
+                                <td></td>
+                                <td></td>
+                                <td>總筆數</td>
+                            </tr>
+                            <tr>
+                                <td>report</td>
+                                <td></td>
+                                <td></td>
+                                <td>全部</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>ageAccount</td>
+                                <td></td>
+                                <td>代理帳號 , 例：demo_age</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>gtype</td>
+                                <td>球種 , 詳細請參照球種代碼表</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>wtype</td>
+                                <td>玩法 , 詳細請參照玩法代碼表</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>tworderdate</td>
+                                <td>帳務日期</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>orderdate</td>
+                                <td>下注日期(年-月-日)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>adddate</td>
+                                <td>下注時間(GMT+8)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>gold</td>
+                                <td>下注金額</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>wingold</td>
+                                <td>輸贏金額</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>result</td>
+                                <td>結果「W(贏)」、「L(輸)」、「LL(中分洞輸)」、「LW(中分洞贏)」、「N(取消注單)」、「N(取消注單)」、「0(尚無結果)」</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>gid</td>
+                                <td>賽事編號</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>type</td>
+                                <td>主客隊</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>concede</td>
+                                <td>球頭1</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>ratio</td>
+                                <td>球頭2</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>ioratio</td>
+                                <td>賠率</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>orderIP</td>
+                                <td>下注IP</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>effective_gold</td>
+                                <td>有效下注金額</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>content</td>
+                                <td>注單資訊</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>lastdate</td>
+                                <td>最後更新時間</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>mem_alias</td>
+                                <td>玩家帳號</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>tname</td>
+                                <td>玩法</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>id</td>
+                                <td>注單ID</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>editDateTime</td>
+                                <td>注單兌獎時間</td>
+                            </tr>
+                        </table>
+                    </ul>
+                </div>
+            </section>
+            <!--後台相關-->
+            <section class="title ti4">
+                <h1>後台相關</h1>
+                <!--3.1-->
+                <div class="ti4_1">
+                    <h2>3.1 管理端URL</h2>
+                    <ul>
+                        <li>功能代碼：getManageWindow</li>
+                        <li>功能說明：此API用於取得管理端 url，當取得 url 後，即可開啟該 url 進入館李端。</li>
+                        <br>
+                        <li>Parameter</li>
+                        <table>
+                            <tr>
+                                <th>參數</th>
+                                <th>型態</th>
+                                <th>說明</th>
+                                <th>必填</th>
+                            </tr>
+                            <tr>
+                                <td>APIpartner</td>
+                                <td>String</td>
+                                <td>營運商 APIpartner</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>funtion</td>
+                                <td>String</td>
+                                <td>功能代碼</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>username</td>
+                                <td>String</td>
+                                <td>帳號</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>hash</td>
+                                <td>String</td>
+                                <td>MD5 Hash驗證碼</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <li>Response&nbsp;<span class="w">Success</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"true"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"URL"</span></p>
+                        </div>
+                        <li>Response&nbsp;<span class="w">Fail</span>&nbsp;(application/json)</li>
+                        <div class="codebox">
+                            <p>"<span class="pr">err</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"false"</span></p>
+                            <p>"<span class="pr">err_msg</span>"&nbsp;<span class="b">:</span>&emsp;<span class="pg">"附錄三"</span></p>
+                            <p>"<span class="pr">ret</span>"&nbsp;<span class="b">:</span></p>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+            <!--附錄-->
+            <section class="title ti5">
+                <h1>附錄</h1>
+                <!--附錄一-->
+                <div class="ti5_1">
+                    <h2>附錄一 - 球種代碼表</h2>
+                    <table class="ap">
+                        <tr>
+                            <th>球種代號</th>
+                            <th>代表球種</th>
+                        </tr>
+                        <tr>
+                            <td>FT</td>
+                            <td>足球</td>
+                        </tr>
+                        <tr>
+                            <td>BK</td>
+                            <td>籃球</td>
+                        </tr>
+                        <tr>
+                            <td>WB</td>
+                            <td>其他籃球</td>
+                        </tr>
+                        <tr>
+                            <td>BS</td>
+                            <td>美棒</td>
+                        </tr>
+                        <tr>
+                            <td>JB</td>
+                            <td>日棒</td>
+                        </tr>
+                        <tr>
+                            <td>CB</td>
+                            <td>中華職棒</td>
+                        </tr>
+                        <tr>
+                            <td>KB</td>
+                            <td>其他棒球</td>
+                        </tr>
+                        <tr>
+                            <td>AF</td>
+                            <td>美式足球</td>
+                        </tr>
+                        <tr>
+                            <td>IB</td>
+                            <td>冰球</td>
+                        </tr>
+                        <tr>
+                            <td>LO</td>
+                            <td>彩球</td>
+                        </tr>
+                        <tr>
+                            <td>ST</td>
+                            <td>指數</td>
+                        </tr>
+                        <tr>
+                            <td>EK</td>
+                            <td>世界盃</td>
+                        </tr>
+                        <tr>
+                            <td>TN</td>
+                            <td>網球</td>
+                        </tr>
+                        <tr>
+                            <td>PO</td>
+                            <td>板球</td>
+                        </tr>
+                        <tr>
+                            <td>VB</td>
+                            <td>排球</td>
+                        </tr>
+                        <tr>
+                            <td>HB</td>
+                            <td>手球</td>
+                        </tr>
+                        <tr>
+                            <td>BL</td>
+                            <td>撞球</td>
+                        </tr>
+                        <tr>
+                            <td>GD</td>
+                            <td>賽馬/賽狗</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="ti5_2">
+                    <h2>附錄二 - 玩法代碼表</h2>
+                    <table class="ap">
+                        <tr>
+                            <th>球種代號</th>
+                            <th>代表球種</th>
+                        </tr>
+                        <tr>
+                            <td>FG</td>
+                            <td>先得分</td>
+                        </tr>
+                        <tr>
+                            <td>R</td>
+                            <td>讓球</td>
+                        </tr>
+                        <tr>
+                            <td>OU</td>
+                            <td>大小</td>
+                        </tr>
+                        <tr>
+                            <td>EO</td>
+                            <td>單雙</td>
+                        </tr>
+                        <tr>
+                            <td>2R</td>
+                            <td>一輸二贏</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>獨贏</td>
+                        </tr>
+                        <tr>
+                            <td>RE</td>
+                            <td>走地讓球</td>
+                        </tr>
+                        <tr>
+                            <td>REO</td>
+                            <td>走地單雙</td>
+                        </tr>
+                        <tr>
+                            <td>PD</td>
+                            <td>波膽</td>
+                        </tr>
+                        <tr>
+                            <td>T</td>
+                            <td>總入球</td>
+                        </tr>
+                        <tr>
+                            <td>ROU</td>
+                            <td>走地大小</td>
+                        </tr>
+                        <tr>
+                            <td>CPR</td>
+                            <td>綜合過關</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="ti5_3">
+                    <h2>附錄三 - 錯誤代碼表</h2>
+                    <table class="ap_2">
+                        <tr>
+                            <th>代號</th>
+                            <th>錯誤描述</th>
+                        </tr>
+                        <tr>
+                            <td>100001</td>
+                            <td>功能代碼錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>100002</td>
+                            <td>hash檢查錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>100003</td>
+                            <td>APIpartner錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>100004</td>
+                            <td>傳送參數錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>290001</td>
+                            <td>API參數username為空</td>
+                        </tr>
+                        <tr>
+                            <td>290002</td>
+                            <td>登入失敗</td>
+                        </tr>
+                        <tr>
+                            <td>290005</td>
+                            <td>進入遊戲大聽失敗</td>
+                        </tr>
+                        <tr>
+                            <td>720001</td>
+                            <td>無此管理帳號</td>
+                        </tr>
+                        <tr>
+                            <td>720002</td>
+                            <td>館李端URL參數錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>661001</td>
+                            <td>管理帳號不存在</td>
+                        </tr>
+                        <tr>
+                            <td>661002</td>
+                            <td>管理帳號停用</td>
+                        </tr>
+                        <tr>
+                            <td>661003</td>
+                            <td>會員帳號已存在</td>
+                        </tr>
+                        <tr>
+                            <td>661004</td>
+                            <td>新增失敗</td>
+                        </tr>
+                        <tr>
+                            <td>660001</td>
+                            <td>管理帳號已存在</td>
+                        </tr>
+                        <tr>
+                            <td>660002</td>
+                            <td>沒有這個上層帳號</td>
+                        </tr>
+                        <tr>
+                            <td>660003</td>
+                            <td>取上層資料錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>660004</td>
+                            <td>新增管理帳號出錯</td>
+                        </tr>
+                        <tr>
+                            <td>660005</td>
+                            <td>階層錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>606001</td>
+                            <td>sdate of edate 沒有資料</td>
+                        </tr>
+                        <tr>
+                            <td>606002</td>
+                            <td>時間範圍錯誤</td>
+                        </tr>
+                        <tr>
+                            <td>606003</td>
+                            <td>錯誤的APIpartner值</td>
+                        </tr>
+                        <tr>
+                            <td>606004</td>
+                            <td>無帳務資料</td>
+                        </tr>
+                        <tr>
+                            <td>271001</td>
+                            <td>取剩餘額度失敗</td>
+                        </tr>
+                        <tr>
+                            <td>272001</td>
+                            <td>查詢會員存/提值LOG失敗-transacid為空</td>
+                        </tr>
+                        <tr>
+                            <td>272002</td>
+                            <td>查詢會員存/提值LOG失敗-transacid不存在</td>
+                        </tr>
+                        <tr>
+                            <td>270001</td>
+                            <td>存/提值額度格是非整數</td>
+                        </tr>
+                        <tr>
+                            <td>270002</td>
+                            <td>會員不存在</td>
+                        </tr>
+                        <tr>
+                            <td>270003</td>
+                            <td>存提時間間隔太短請稍後再執行</td>
+                        </tr>
+                        <tr>
+                            <td>270004</td>
+                            <td>transacid為空</td>
+                        </tr>
+                        <tr>
+                            <td>270005</td>
+                            <td>transacid已存在</td>
+                        </tr>
+                        <tr>
+                            <td>270006</td>
+                            <td>transacid額度不足</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <span class="end">Generated by aglio on 09 Sep 2020</span>
+        </article>
+        <div class="filter"></div>
+        <div class="bg"></div>
+    </main>
+</body>
+</html>
