@@ -402,9 +402,9 @@ main {
   main .bg {
     width: 100%;
     height: 100%;
-    background: url("../images/bg.jpg") no-repeat bottom left;
+    background: url("../images/bg.jpg") no-repeat left bottom;
     position: fixed;
-    bottom: 0px;
+    top: 0px;
     z-index: -999; }
 
 @media only screen and (max-width: 769px) {
@@ -491,9 +491,13 @@ main {
       display: none; }
     main article {
       padding: 80px 30px 30px; }
+    main .bg {
+      background-attachment: fixed; }
   .slide_r {
-    -webkit-transform: translateX(70%);
-    -ms-transform: translateX(70%);
-    transform: translateX(70%);
+    -webkit-transform: translateX(70%) translateY(0%);
+    -ms-transform: translateX(70%) translateY(0%);
+    transform: translateX(70%) translateY(0%);
     -webkit-filter: brightness(0.1);
-    filter: brightness(0.1); } }
+    filter: brightness(0.1); }
+    .slide_r .bg {
+      background-attachment: fixed; } }

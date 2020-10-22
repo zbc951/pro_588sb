@@ -84,9 +84,15 @@
         article {
             padding: 80px 30px 30px;
         }
+        .bg {
+            background-attachment:fixed;
+        }
     }
     .slide_r {
-        transform: translateX(70%);
+        transform: translateX(70%) translateY(0%);
         filter: brightness(.1);
+        .bg {
+            background-attachment:fixed;
+        }
     }
 }
